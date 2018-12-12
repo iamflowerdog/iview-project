@@ -6,13 +6,28 @@
           <AutoComplete
               v-model="value2"
               @on-search="handleSearch2"
+              @on-select="handleSelect"
               placeholder="input here"
+              :label-in-value="true"
               style="width:200px">
-            <Option v-for="item in data2" :value="item" :key="item">{{ item }}</Option>
+            <Option v-for="item in data2" :label="item.name" :value="item.id" :key="item.id"></Option>
           </AutoComplete>
         </div>
       </TabPane>
-      <TabPane label="标签二" name="name2">标签二的内容</TabPane>
+      <TabPane label="标签二" name="name2">
+        <div class="flex">
+          <Select
+              v-model="model13"
+              filterable
+              remote
+              :remote-method="remoteMethod1"
+              style="width:200px"
+          >
+            <Option v-for="(option, index) in options1" :value="option.value" :key="index">{{option.label}}</Option>
+          </Select>
+        </div>
+
+      </TabPane>
       <TabPane label="标签三" name="name3">标签三的内容</TabPane>
     </Tabs>
   </div>
@@ -23,19 +38,41 @@
     data () {
       return {
         value2: '',
-        data2: []
+        data2: [],
+        model13: '',
+        options1: [],
+        list: ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', ]
       }
     },
     mounted(){
       this.value2 = '中文';
+      this.model13 = 'a';
     },
     methods: {
       handleSearch2 (value) {
-        this.data2 = !value || value.indexOf('@') >= 0 ? [] : [
-          value + '@qq.com',
-          value + '@sina.com',
-          value + '@163.com'
-        ];
+        this.data2 = [
+          {id: 1, name: 'xxx'},
+          {id: 2, name: 'yyy'},
+          {id: 3, name: 'www'},
+        ]
+      },
+      handleSelect(e){
+        console.log(e);
+      },
+      remoteMethod1(query){
+        if (query !== '') {
+          setTimeout(() => {
+            const list = this.list.map(item => {
+              return {
+                value: item,
+                label: item
+              };
+            });
+            this.options1 = list.filter(item => item.label.toLowerCase().indexOf(query.toLowerCase()) > -1);
+          }, 200);
+        } else {
+          this.options1 = [];
+        }
       }
     }
   }
