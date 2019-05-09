@@ -28,12 +28,15 @@
         </div>
 
       </TabPane>
-      <TabPane label="标签三" name="name3">标签三的内容</TabPane>
+      <TabPane label="标签三" name="name3">
+        <Date></Date>
+      </TabPane>
     </Tabs>
   </div>
 </template>
 
 <script>
+  import Date from './components/Date.vue'
   export default {
     data () {
       return {
@@ -43,6 +46,9 @@
         options1: [],
         list: ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', ]
       }
+    },
+    components: {
+      Date
     },
     mounted(){
       this.value2 = '中文';
