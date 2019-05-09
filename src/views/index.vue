@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tabs value="name1">
+    <Tabs value="name4" :animated="false">
       <TabPane label="标签一" name="name1">
         <div class="flex">
           <AutoComplete
@@ -31,12 +31,16 @@
       <TabPane label="标签三" name="name3">
         <Date></Date>
       </TabPane>
+      <TabPane label="新建客户slot" name="name4">
+        <ESelect></ESelect>
+      </TabPane>
     </Tabs>
   </div>
 </template>
 
 <script>
   import Date from './components/Date.vue'
+  import ESelect from './components/ESelect.vue'
   export default {
     data () {
       return {
@@ -48,7 +52,8 @@
       }
     },
     components: {
-      Date
+      Date,
+      ESelect
     },
     mounted(){
       this.value2 = '中文';
@@ -91,5 +96,8 @@
     div{
       margin: auto;
     }
+  }
+  .ivu-tabs{
+    overflow: visible!important;
   }
 </style>
