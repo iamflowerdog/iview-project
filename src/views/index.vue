@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tabs value="name4" :animated="false">
+    <Tabs value="name5" :animated="false">
       <TabPane label="标签一" name="name1">
         <div class="flex">
           <AutoComplete
@@ -34,6 +34,9 @@
       <TabPane label="新建客户slot" name="name4">
         <ESelect></ESelect>
       </TabPane>
+      <TabPane label="测试class不更改" name="name5">
+        <ChangeClass></ChangeClass>
+      </TabPane>
     </Tabs>
   </div>
 </template>
@@ -41,6 +44,7 @@
 <script>
   import Date from './components/Date.vue'
   import ESelect from './components/ESelect.vue'
+  import ChangeClass from './components/ChangeClass.vue'
   export default {
     data () {
       return {
@@ -53,6 +57,7 @@
     },
     components: {
       Date,
+      ChangeClass,
       ESelect
     },
     mounted(){
