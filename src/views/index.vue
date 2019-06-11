@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tabs value="name5" :animated="false">
+    <Tabs value="name7" :animated="false">
       <TabPane label="标签一" name="name1">
         <div class="flex">
           <AutoComplete
@@ -37,6 +37,12 @@
       <TabPane label="测试class不更改" name="name5">
         <ChangeClass></ChangeClass>
       </TabPane>
+      <TabPane label="row_flex_justify" name="name6">
+        <Row_Flex></Row_Flex>
+      </TabPane>
+      <TabPane label="input" name="name7">
+        <InputA></InputA>
+      </TabPane>
     </Tabs>
   </div>
 </template>
@@ -45,6 +51,8 @@
   import Date from './components/Date.vue'
   import ESelect from './components/ESelect.vue'
   import ChangeClass from './components/ChangeClass.vue'
+  import Row_Flex from './components/Row_Flex.vue'
+  import InputA from './components/input_autocomplete.vue'
   export default {
     data () {
       return {
@@ -58,6 +66,8 @@
     components: {
       Date,
       ChangeClass,
+      Row_Flex,
+      InputA,
       ESelect
     },
     mounted(){
